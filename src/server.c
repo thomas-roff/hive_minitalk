@@ -37,10 +37,6 @@ int	main()
 	//sa_sigaction = 
 	ft_printf("%d\n", getpid());
 	while (1)
-	{
 		pause();
-		sigaction(SIGUSR1, &sa, NULL);
-		sigaction(SIGUSR2, &sa, NULL);
-	}
 	return (0);
 }

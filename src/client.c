@@ -42,7 +42,6 @@ int	send_char_to_server(unsigned char c, int pid)
 				return (1);
 		}
 		bit >>= 1;
-		usleep(100);
 	}
 	return (0);
 }

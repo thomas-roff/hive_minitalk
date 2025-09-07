@@ -16,4 +16,8 @@
 # include "../libft/libft.h"
 # include <signal.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4096
+# endif
+
 #endif

@@ -47,6 +47,7 @@ MKDIR		= mkdir -p
 # LIBFT LINKING
 LIBFT_DIR	= ./libft
 LIBFT_H		= $(LIBFT_DIR)/libft.h
+LIBFT_A		= $(LIBFT_DIR)/libft.a
 
 # INCLUDE PATHS AND LIBRARIES
 INC			= -I. -I$(LIBFT_DIR) -I$(INC_DIR)
@@ -54,13 +55,15 @@ LIBFT		= -L$(LIBFT_DIR) -lft
 
 # <<<<<<< MAIN TARGETS >>>>>>>
 
-$(SERVER): $(S_OBJ) $(LIBFT)
+all: start $(SERVER) $(CLIENT) finish
+
+$(SERVER): $(S_OBJ) $(LIBFT_A)
 	@$(CC) $(CFLAGS) $(INC) $(S_OBJ) $(LIBFT) -o $(SERVER)
 
-$(CLIENT): $(C_OBJ) $(LIBFT)
+$(CLIENT): $(C_OBJ) $(LIBFT_A)
 	@$(CC) $(CFLAGS) $(INC) $(C_OBJ) $(LIBFT) -o $(CLIENT)
 
-$(LIBFT):
+$(LIBFT_A):
 	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
 
 $(OBJ_DIR):
@@ -70,8 +73,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER) $(LIBFT_H) | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 # <<<<<<< PHONY TARGETS >>>>>>>
-
-all: start $(NAME) finish
 
 start:
 	@echo "==== THOMASROFF MAKEFILE ===="
@@ -87,7 +88,7 @@ clean:
 
 fclean: clean
 	@echo "Removing static library files."
-	@rm -f $(NAME)
+	@rm -f $(SERVER) $(CLIENT)
 	@make -C libft fclean --no-print-directory
 
 re: fclean all
