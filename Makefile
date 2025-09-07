@@ -28,7 +28,7 @@ C_SRC_FILES	= client.c
 C_SRC		= $(addprefix $(SRC_DIR)/, $(C_SRC_FILES))
 
 # PROJECT HEADER
-HEADER		= minitalk.h
+HEADER		= $(INC_DIR)/minitalk.h
 
 # PROJECT OBJECTS
 S_OBJ		= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(S_SRC))
