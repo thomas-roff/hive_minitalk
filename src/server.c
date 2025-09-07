@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include <signal.h>
-//#include <stdio.h>
-#include <unistd.h>
+#include "../inc/minitalk.h"
 
 void	handle_sigusr1(int sig)
 {

@@ -19,7 +19,7 @@ NAME		= $(SERVER) $(CLIENT)
 # PROJECT DIRECTORIES
 SRC_DIR		= src
 OBJ_DIR		= obj
-INC_DIR		= includes
+INC_DIR		= inc
 
 # PROJECT SOURCES: Explicitly states
 S_SRC_FILES	= server.c
@@ -92,4 +92,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all start finishclean fclean re
+.PHONY: all start finish clean fclean re

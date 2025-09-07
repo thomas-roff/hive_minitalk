@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include <signal.h>
+#include "../inc/minitalk.h"
 
 // void	(int sig)
 // {
