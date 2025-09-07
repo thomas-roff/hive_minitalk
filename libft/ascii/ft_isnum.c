@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_isnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thblack- <thblack-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/19 22:13:42 by thblack-          #+#    #+#             */
-/*   Updated: 2025/07/21 19:03:53 by thblack-         ###   ########.fr       */
+/*   Created: 2025/04/18 23:01:53 by thblack-          #+#    #+#             */
+/*   Updated: 2025/08/11 15:02:13 by thblack-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int	ft_isnum(int c)
 {
-	size_t			i;
-	unsigned char	*destc;
-	unsigned char	*srcc;
-
-	i = 0;
-	destc = (unsigned char *)dest;
-	srcc = (unsigned char *)src;
-	while (i < n)
-	{
-		destc[i] = srcc[i];
-		i++;
-	}
-	return (dest);
+	if ((c >= '0' && c <= '9') || c == '+' || c == '-')
+		return (1);
+	return (0);
 }

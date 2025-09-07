@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "../libft/libft.h"
 #include <signal.h>
 
 // void	(int sig)
@@ -35,17 +35,17 @@ int	send_char_to_server(unsigned char c, int pid)
 		if (bit & c)
 		{
 			if (kill(pid, SIGUSR1) == -1)
-				return (0);
+				return (1);
 		}
 		else
 		{
 			if (kill(pid, SIGUSR2) == -1)
-				return (0);
+				return (1);
 		}
 		bit >>= 1;
 		usleep(100);
 	}
-	return (1);
+	return (0);
 }
 
 int	main(int argc, char **argv)
