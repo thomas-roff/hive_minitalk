@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/minitalk.h"
+#include <signal.h>
 
 // void	(int sig)
 // {
@@ -24,10 +25,11 @@
 // 	sa.sa_handler = &handle_sigusr1;
 // 	sigaction(SIGUSR1, &sa, NULL);
 
-void	send_char_to_server(unsigned char c, int pid)
+volatile sig_atomic_t	receipt;
+
+static void	send_char_to_server(unsigned char c, int pid)
 {
 	unsigned char	bit;
-
 	bit = 0b10000000;
 	while (bit)
 	{
@@ -42,11 +44,13 @@ void	send_char_to_server(unsigned char c, int pid)
 				exit(EXIT_FAILURE);
 		}
 		bit >>= 1;
+		while (receipt == 0)
+			pause();
 	}
 	return ;
 }
 
-void	send_message_to_server(char *message, int pid)
+static void	send_message_to_server(char *message, int pid)
 {
 	int	i;
 
@@ -92,19 +96,34 @@ int	pid_check(char *pid_input)
 	return (pid);
 }
 
+static void	client_handler(int sig)
+{
+	(void)sig;
+	receipt = 1;
+	return ;
+}
+
+static void	init_sig(void)
+{
+	struct sigaction act;
+
+	act.sa_handler = client_handler;
+	sigemptyset(&act.sa_mask);
+	act.sa_flags = SA_NODEFER;
+	client_handler(SIGUSR1);
+}
+
 int	main(int argc, char **argv)
 {
 	int	pid;
-	int	i;
 
 	if (argc == 3)
 	{
 		pid = pid_check(argv[1]);
 		if (pid < 0)
 			return (1);
-		i = 0;
-		while (argv[2][i])
-			send_message_to_server(argv[2], pid);
+		init_sig();
+		send_message_to_server(argv[2], pid);
 	}
 	return (0);
 }

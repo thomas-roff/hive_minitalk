@@ -16,4 +16,14 @@
 # include "../libft/libft.h"
 # include <signal.h>
 
+typedef struct s_buf_state
+{
+	int	realloc;
+	int	len;
+	int	receipt;
+}		t_buf_state;
+
+extern volatile sig_atomic_t	receipt;
+extern t_buf_state				buf_state;
+
 #endif
