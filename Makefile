@@ -6,7 +6,7 @@
 #    By: thblack- <thblack-@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/24 14:57:58 by thblack-          #+#    #+#              #
-#    Updated: 2025/09/04 18:24:36 by thblack-         ###   ########.fr        #
+#    Updated: 2025/09/09 17:04:45 by thblack-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ INC_DIR		= inc
 # PROJECT SOURCES: Explicitly states
 S_SRC_FILES	= server.c
 S_SRC		= $(addprefix $(SRC_DIR)/, $(S_SRC_FILES))
-C_SRC_FILES	= client.c
+C_SRC_FILES	= client.c minitalk_utils.c
 C_SRC		= $(addprefix $(SRC_DIR)/, $(C_SRC_FILES))
 
 # PROJECT HEADER

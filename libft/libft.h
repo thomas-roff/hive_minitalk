@@ -20,8 +20,8 @@
 # include <fcntl.h>
 # include <stdarg.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+# ifndef BUF_SIZE
+#  define BUF_SIZE 1024
 # endif
 
 # ifndef FD_MAX

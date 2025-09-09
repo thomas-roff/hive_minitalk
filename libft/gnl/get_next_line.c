@@ -75,13 +75,13 @@ char	*ft_read_file(int fd, char *res)
 		res = ft_calloc(1, 1);
 	if (!res)
 		return (NULL);
-	buffer = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
+	buffer = ft_calloc((BUF_SIZE + 1), sizeof(char));
 	if (!buffer)
 		return (free(res), NULL);
 	byte_read = 1;
 	while (byte_read > 0)
 	{
-		byte_read = read(fd, buffer, BUFFER_SIZE);
+		byte_read = read(fd, buffer, BUF_SIZE);
 		if (byte_read < 0)
 			return (free(res), free(buffer), NULL);
 		buffer[byte_read] = '\0';
@@ -99,7 +99,7 @@ char	*get_next_line(int fd)
 	static char	*heap[FD_MAX];
 	char		*line;
 
-	if (fd < 0 || fd >= 1024 || BUFFER_SIZE < 1)
+	if (fd < 0 || fd >= 1024 || BUF_SIZE < 1)
 		return (NULL);
 	heap[fd] = ft_read_file(fd, heap[fd]);
 	if (!heap[fd])
